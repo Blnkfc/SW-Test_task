@@ -1,7 +1,8 @@
+
+
 import Link from "next/link"
 
-
-const TitlePage = () => {
+const TitlePage = async  () => {
 
 
   return <div className={`
