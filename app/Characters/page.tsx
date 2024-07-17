@@ -2,10 +2,11 @@
 import { useEffect, useState } from 'react';
 import axios from 'axios'; // Make sure Axios is installed and imported
 import SingleCharacter from './SingleCharacter/page';
+import { Character } from '@/interfaceList';
 
 
 const Characters = () => {
-    const [characters, setCharacters] = useState<object[]>([]);
+    const [characters, setCharacters] = useState<Character[]>([]);
     const [isLoading, setIsLoading] = useState(false);
 
     useEffect(() => {
@@ -30,11 +31,12 @@ const Characters = () => {
     if (isLoading) return <div>Loading...</div>;
 
     return (
-        <div className="
+        <div className=" characters
         flex flex-wrap  gap-y-6  gap-x-2  justify-around h-full p-10 bg-black
         ">
             {characters.map((character) => (
-                <SingleCharacter key={character.id} name={character.name} />
+                <SingleCharacter key={character.id} name={character.name} height={character.height} birth_year={character.birth_year} 
+                gender={character.gender} />
             ))}
         </div>
     );

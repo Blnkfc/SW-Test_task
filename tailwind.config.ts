@@ -31,6 +31,9 @@ const config: Config = {
       },
       spacing:{
         "22": "22%"
+      },
+      boxShadow:{
+        "default": "0px 0px 10px 0px rgba(247,228,72,0.75);"
       }
     },
   },
