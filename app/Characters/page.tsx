@@ -1,39 +1,43 @@
-import SingleCharacter from "./SingleCharacter/page"
+'use client'
+import { useEffect, useState } from 'react';
+import axios from 'axios'; // Make sure Axios is installed and imported
+import SingleCharacter from './SingleCharacter/page';
 
 
-const Characters = async () => {
-    const axios = require('axios').default
+const Characters = () => {
+    const [characters, setCharacters] = useState<object[]>([]);
+    const [isLoading, setIsLoading] = useState(false);
 
-    const fetchData = async(param:string) => {
-        try{
-            const res = await axios.get("https://sw-api.starnavi.io"+param)
-            // console.log(res.data)
-            return res.data
-        }catch(error){
-            console.log(error)
-            throw(error)
-        }
-    }
-    const getData = async(param:string) => {
-        return await fetchData(param)
-    }
+    useEffect(() => {
+        const fetchCharacters = async () => {
+            setIsLoading(true);
+            let nextPageUrl = 'https://sw-api.starnavi.io/people/';
+            let allCharacters:any = [];
 
-    const people: any = await getData('/people')
-    const films: any = await getData('/films')
-    const starships: any = await getData('/starships')
+            while (nextPageUrl) {
+                const response = await axios.get(nextPageUrl);
+                allCharacters = [...allCharacters, ...response.data.results];
+                nextPageUrl = response.data.next; 
+            }
 
-    
+            setCharacters(allCharacters);
+            setIsLoading(false);
+        };
 
+        fetchCharacters();
+    }, []);
 
+    if (isLoading) return <div>Loading...</div>;
 
+    return (
+        <div className="
+        flex flex-wrap  gap-y-6  gap-x-2  justify-around h-full p-10 bg-black
+        ">
+            {characters.map((character) => (
+                <SingleCharacter key={character.id} name={character.name} />
+            ))}
+        </div>
+    );
+};
 
-
-    return <div className={`
-        h-dvh   
-    `} >
-        <SingleCharacter />
-    </div>
-}
-
-
-export default Characters
+export default Characters;

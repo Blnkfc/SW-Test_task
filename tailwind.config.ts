@@ -8,6 +8,15 @@ const config: Config = {
   ],
   theme: {
     extend: {
+      keyframes:{
+        appear:{
+          '0%':{opacity: "0", scale: "0.8"},
+          '100%':{opacity: "1", scale: "1" }
+        }
+      },
+      animation:{
+        "appear":"appear linear "
+      },
       backgroundImage: {
         "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
         "gradient-conic":
@@ -20,6 +29,9 @@ const config: Config = {
         "secondary": "#f7e448",
         
       },
+      spacing:{
+        "22": "22%"
+      }
     },
   },
   plugins: [],

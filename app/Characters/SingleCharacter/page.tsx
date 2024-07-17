@@ -1,11 +1,19 @@
+`use client`
+import Image from "next/image"
 
+const SingleCharacter = (props: any) => {
 
-const SingleCharacter = () => {
+    console.log(props.name)
 
     return <div className={`
-    h-40 bg-black w-1/5 text-white 
-    `} >
-        Character
+    flex h-40 bg-black w-22 text-white wrap border-2 border-secondary rounded-md animate-appear 
+    `} 
+    style={{animationTimeline: "view()", animationRange:"entry 0% cover 20%"}}
+    >
+        <Image 
+        
+        />
+        <h2>{props.name}</h2>
     </div>
 }
 
