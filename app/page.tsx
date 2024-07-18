@@ -5,7 +5,9 @@ import Link from "next/link"
 const TitlePage = async  () => {
 
 
-  return <div className={`
+  return <div
+  style={{clipPath:"polygon(0 0, 100% 0, 100% 100%, 0% 100%)"}} 
+  className={`
   h-dvh flex flex-col justify-around align-center bg-black text-white 
   `} >
     <h1>TitlePage</h1>

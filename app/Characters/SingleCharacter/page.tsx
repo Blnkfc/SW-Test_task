@@ -5,16 +5,18 @@ const SingleCharacter = (props: any) => {
 
     console.log(props.name)
 
-    return <section className={` characters__single
+    return <section className={` characters__single group
     flex flex-col gap-y-8 items-center h-auto bg-black w-22 p-4 text-white wrap border-2 border-secondary rounded-md animate-appear 
-    duration-100 relative 
-    hover:shadow-default hover:shadow-secondary 
+    duration-100 relative  z-[999]
+    hover:translate-y-[-1em]
     
     `} 
     style={{animationTimeline: "view()", animationRange:"entry 0% cover 30%", clipPath:"polygon(0 0, 100% 0, 100% 100%, 0% 100%)"}}
     >
         <div className="characters__single__bg
-        absolute w-3/5 h-[30rem] bg-secondary z-[-2] opacity-25 rotate-[60deg]
+        absolute w-0 h-0 border-b-[10em] border-secondary border-l-[23em] border-l-transparent opacity-25 right-0 bottom-0 z-[-1] 
+        transition-all
+        group-hover:border-b-[12em] group-hover:border-l-[25em]
         "> </div>
         <div className="character__single__card
         flex items-center  w-full gap-x-4
@@ -37,7 +39,7 @@ const SingleCharacter = (props: any) => {
         </div>
         <button
             className="characters__single__btn
-            uppercase text-secondary rounded-md w-4/5 bg-secondary text-black p-2 mt-16 mb-4
+            uppercase text-black rounded-md w-4/5 bg-secondary text-black p-2 mt-16 mb-4
             hover:font-bold 
             "
         >
