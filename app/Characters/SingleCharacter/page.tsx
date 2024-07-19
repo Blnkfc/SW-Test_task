@@ -3,10 +3,8 @@ import Link from "next/link"
 `use client`
 
 
+
 const SingleCharacter = (props: any) => {
-
-
-
     return <section className={` characters__single group/main
     flex flex-col gap-y-8 items-center h-auto bg-black w-22 p-4 text-white wrap border-2 border-secondary rounded-md animate-appear 
     duration-100 relative  z-[999]
@@ -32,15 +30,18 @@ const SingleCharacter = (props: any) => {
             `} 
         style={{filter:"brightness(0) saturate(100%) invert(73%) sepia(32%) saturate(697%) hue-rotate(16deg) brightness(108%) contrast(109%)"}}
         />
+        
         <ul className="character__single__card__info list-disc">
-            <h2 className=" font-bold " >{props.character.name}</h2>
-            <li className=" ml-4 " >{props.character.gender}</li>
-            <li className=" ml-4 " >{props.character.height}</li>
-            <li className=" ml-4 " >{props.character.birth_year}</li>
+            <h2 className=" font-bold " >{props.character?.name ?? " " }</h2>
+            <li className=" ml-4 " >{props.character?.gender ?? " "}</li>
+            <li className=" ml-4 " >{props.character?.height ?? " "}</li>
+            <li className=" ml-4 " >{props.character?.birth_year ?? " "}</li>
         </ul>
+
+
         </div>
         <Link
-            href={`/Characters/SingleCharacter/${props.character.id}`}
+            href={`/Characters/SingleCharacter/${props.character?.id ?? "1"}`}
             className="isolate characters__single__btn group/btn
             uppercase text-black rounded-md w-4/5 bg-secondary text-black p-2 mt-16 mb-4 transition-all text-center
             hover:font-bold 
