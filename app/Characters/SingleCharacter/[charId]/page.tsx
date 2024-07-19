@@ -66,7 +66,7 @@ const CharacterFlow = ({params}:{params: {charId:number}}) => {
     const characterNodes: Node[] = [
         {
             id: characterInfo?.id?.toString()+"c" ?? " " ,
-            position: {x: 10, y: 50},
+            position: {x: 300, y: 50},
             data:{ character: characterInfo },
             type: "CharacterNode"
         }
@@ -78,7 +78,7 @@ const CharacterFlow = ({params}:{params: {charId:number}}) => {
     map((f, index) => {
         return {
             id: f?.id?.toString()+"f" ?? " ",
-            position: {x: 300, y:100*index},
+            position: {x: 600, y:100*index},
             data: {film: f},
             type: "FilmNode"
         }
@@ -90,7 +90,7 @@ const CharacterFlow = ({params}:{params: {charId:number}}) => {
     map((s, index) => {
         return {
             id: s?.id?.toString()+"s" ?? " ",
-            position: {x: 800, y: 100*index},
+            position: {x: 1100, y: 100*index},
             data: {starship: s},
             type: "StarshipNode"
         }

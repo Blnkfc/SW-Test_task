@@ -28,13 +28,16 @@ const config: Config = {
         "white": "#fff",
         "backgroundDark": "#2c2d2e",
         "secondary": "#f7e448",
+        "secondaryDark": "#d1ae3d",
+        "secondaryDarker": "#a8781e"
         
       },
       spacing:{
         "22": "22%"
       },
       boxShadow:{
-        "default": "0px 0px 10px 0px rgba(247,228,72,0.75);"
+        "default": "0px 0px 10px 0px rgba(247,228,72,0.75);",
+        "inside": " inset 0px 0px 2px 0px rgba(255,255,255,1);"
       }
     },
   },
