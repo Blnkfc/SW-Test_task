@@ -1,10 +1,11 @@
+import { Character } from "@/interfaceList"
 import Link from "next/link"
 
 `use client`
 
 
 
-const SingleCharacter = (props: any) => {
+const SingleCharacter = (props: {character: Character}) => {
     return <section className={` characters__single group/main
     flex flex-col gap-y-8 items-center h-auto bg-black w-22 p-4 text-white wrap border-2 border-secondary rounded-md animate-appear 
     duration-100 relative  z-[999]

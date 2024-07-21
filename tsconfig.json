@@ -21,6 +21,6 @@
       "@/*": ["./*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "app/Characters/SingleCharacter/[charId]/CharacterNode.jsx"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "app/Characters/SingleCharacter/[charId]/CharacterNode.tsx", "app/Characters/SingleCharacter/[charId]/FilmNode.jsx"],
   "exclude": ["node_modules"]
 }
