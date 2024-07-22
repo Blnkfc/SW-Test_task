@@ -8,7 +8,7 @@ export default function CharacterNode  (data:NodeProps<CharacterNode>)  {
 
     console.log(`NODE DATA: ${JSON.stringify(data)}`)
     return <div className={`
-        border-2 border-secondary rounded-md p-4 bg-backgroundDark text-white shadow-default
+        border-2 border-secondary rounded-md p-4 bg-backgroundDark text-white shadow-default scale-[0.8]
     `} >
         <ul className="character__single__card__info list-disc">
             <h2 className=" font-bold text-secondary " >{data.data.character?.name ?? " " }</h2>

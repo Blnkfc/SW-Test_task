@@ -7,6 +7,7 @@ import '@xyflow/react/dist/style.css';
 import CharacterNode from './CharacterNode';
 import FilmNode from './FilmNode'
 import StarshipNode from './StarshipNode'
+import Link from 'next/link';
 const nodeTypes = {
     "CharacterNode": CharacterNode,
     "FilmNode": FilmNode,
@@ -14,7 +15,7 @@ const nodeTypes = {
 }
 
 
-const CharacterFlow = ({params}:{params: {charId:number}}) => {
+const CharacterFlow = (props:{character:Character, isDisplayed:boolean}) => {
     //State containing character object from /people/id url.
     const [characterInfo, setCharacterInfo] = useState<Character>()
     //State for an array of objects resembling starships of current character from /starships/id url.
@@ -25,48 +26,46 @@ const CharacterFlow = ({params}:{params: {charId:number}}) => {
     const initialNodes: Node[] = []
     const initialEdges: Edge[] = []
 
-
     //Fecthing the character object using dynamic parameter from current url.
     useEffect(() => {
         setIsLoading(true)
-        const fetchData = async() => {
-            const characterResponse = await axios.get(`https://sw-api.starnavi.io/people/${params.charId}`)
-            setCharacterInfo(characterResponse.data)
-        }
-
-        fetchData()
-    }, [])
+        setCharacterInfo(props.character)
+    }, [props])
     //Making parallel requests for array of film's ids and array of starship's ids.
+    
     useEffect(() => {
-        if(isLoading){
-        const filmsRequests = characterInfo?.films.map(async (f) => await  axios.get(`https://sw-api.starnavi.io/films/${f}`)) || []
-        const starshipsRequests = characterInfo?.starships.map(async (s) => await axios.get(`https://sw-api.starnavi.io/starships/${s}`)) || []
-        const fetchData = async() => {
-            const filmsResponses = await axios.all(filmsRequests)
-            const starshipsResponses = await axios.all(starshipsRequests)
-            
-            
-            setFilms(filmsResponses.map((fres) => fres.data))
-            setStarships(starshipsResponses.map((sres) => sres.data))
-        }
-        fetchData()
-        setIsLoading(false)
+        if(props.isDisplayed){
+            if(isLoading){
+                const filmsRequests = characterInfo?.films.map(async (f) => await  axios.get(`https://sw-api.starnavi.io/films/${f}`)) || []
+                const starshipsRequests = characterInfo?.starships.map(async (s) => await axios.get(`https://sw-api.starnavi.io/starships/${s}`)) || []
+                const fetchData = async() => {
+                    const filmsResponses = await axios.all(filmsRequests)
+                    const starshipsResponses = await axios.all(starshipsRequests)
+                    
+                    
+                    setFilms(filmsResponses.map((fres) => fres.data))
+                    setStarships(starshipsResponses.map((sres) => sres.data))
+                }
+                fetchData()
+                setIsLoading(false)
+                console.log(`IS LOADING: ${isLoading}`)
+                }
+                
         }
         
-        
-    }, [characterInfo])
+    }, [characterInfo, props.isDisplayed])
+
+    
 
 
-
-
-    console.log(`CHARACTERS: ${characterInfo}, FILMS: ${filmsList}, STARSHIPS: ${starshipsList}`)
+   // console.log(`CHARACTERS: ${characterInfo}, FILMS: ${filmsList}, STARSHIPS: ${starshipsList}`)
 
 
     //ESTABLISHING THE NODES FOR CHARACTERS, FILMS AND STARSHIPS
     const characterNodes: Node[] = [
         {
             id: characterInfo?.id?.toString()+"c" ?? " " ,
-            position: {x: 300, y: 50},
+            position: {x: 100, y: 50},
             data:{ character: characterInfo },
             type: "CharacterNode"
         }
@@ -78,7 +77,7 @@ const CharacterFlow = ({params}:{params: {charId:number}}) => {
     map((f, index) => {
         return {
             id: f?.id?.toString()+"f" ?? " ",
-            position: {x: 600, y:100*index},
+            position: {x: 400, y:100*index},
             data: {film: f},
             type: "FilmNode"
         }
@@ -90,12 +89,12 @@ const CharacterFlow = ({params}:{params: {charId:number}}) => {
     map((s, index) => {
         return {
             id: s?.id?.toString()+"s" ?? " ",
-            position: {x: 1100, y: 100*index},
+            position: {x: 700, y: 100*index},
             data: {starship: s},
             type: "StarshipNode"
         }
     })
-    console.log(`NODES: ${JSON.stringify(initialNodes.concat(characterNodes, filmNodes))}`)
+    // console.log(`NODES: ${JSON.stringify(initialNodes.concat(characterNodes, filmNodes))}`)
 
 
 
@@ -110,7 +109,7 @@ const CharacterFlow = ({params}:{params: {charId:number}}) => {
             target: `${f.id.toString()}f`
         }
     })
-    console.log(`Edges: ${JSON.stringify(characterEdges)}`)
+    // console.log(`Edges: ${JSON.stringify(characterEdges)}`)
 
 
     //Iterating through character.starships returning an edge from filtered films array, where starship id = film id 
@@ -137,7 +136,7 @@ const CharacterFlow = ({params}:{params: {charId:number}}) => {
     </div>;
 
     return <div className={`
-        w-full h-dvh border-2 border-black
+        w-[100%] h-[500px] border-2 border-black relative
     `}>
         <ReactFlow 
         colorMode='dark'
