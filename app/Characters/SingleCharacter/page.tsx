@@ -1,7 +1,7 @@
 "use client"
 import { Character } from "@/interfaceList"
 import Link from "next/link"
-import CharacterFlow from "./CharacterFlow/page"
+import CharacterFlow from "./CharacterFlow/CharacterFlow"
 import { useState } from "react"
 
 
@@ -9,7 +9,7 @@ import { useState } from "react"
 
 
 
-const SingleCharacter = (props: {character: Character}) => {
+const SingleCharacter = (props: any) => {
     const [flowDisplay, setFlowDisplay] = useState(false)
     
     const toggleFlowDisplay = () => {
@@ -66,7 +66,7 @@ const SingleCharacter = (props: {character: Character}) => {
         <div className={`
             ${flowDisplay?"static block scale-1":"absolute hidden scale-0"}  border-2 border-secondary grow transition-all
             `}>
-        <CharacterFlow character={props.character} isDisplayed = {flowDisplay}/>
+        <CharacterFlow  character={props.character} isDisplayed = {flowDisplay}/>
         <button className="absolute top-0 right-0 p-8 text-secondary z-[999] text-3xl font-bold hover:animate-pulse" onClick={toggleFlowDisplay} > X </button>
         </div>
     </div>

@@ -15,7 +15,7 @@ const nodeTypes = {
 }
 
 
-const CharacterFlow = (props:{character:Character, isDisplayed:boolean}) => {
+const CharacterFlow = (props:any) => {
     //State containing character object from /people/id url.
     const [characterInfo, setCharacterInfo] = useState<Character>()
     //State for an array of objects resembling starships of current character from /starships/id url.
