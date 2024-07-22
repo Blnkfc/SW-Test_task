@@ -1,4 +1,4 @@
-`use client`
+"use client"
 import { Character } from "@/interfaceList"
 import Link from "next/link"
 import CharacterFlow from "./CharacterFlow/page"
