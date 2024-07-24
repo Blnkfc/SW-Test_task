@@ -22,7 +22,7 @@ const CharacterFlow = (props:any) => {
     const [starshipsList, setStarships] = useState<Starship[]>([])
     //State for an array of objects resembling films of current character from /films/id url.
     const [filmsList, setFilms] = useState<Film[]>([])
-    const [isLoading, setIsLoading] = useState(false);
+    const [isLoading, setIsLoading] = useState(true);
     const initialNodes: Node[] = []
     const initialEdges: Edge[] = []
 
@@ -36,8 +36,8 @@ const CharacterFlow = (props:any) => {
     useEffect(() => {
         if(props.isDisplayed){
             if(isLoading){
-                const filmsRequests = characterInfo?.films.map(async (f) => await  axios.get(`https://sw-api.starnavi.io/films/${f}`)) || []
-                const starshipsRequests = characterInfo?.starships.map(async (s) => await axios.get(`https://sw-api.starnavi.io/starships/${s}`)) || []
+                const filmsRequests = characterInfo?.films.map((f) =>  axios.get(`https://sw-api.starnavi.io/films/${f}`).then(function (res){ return res})) || []
+                const starshipsRequests = characterInfo?.starships.map( (s) => axios.get(`https://sw-api.starnavi.io/starships/${s}`).then(function (res){ return res})) || []
                 const fetchData = async() => {
                     const filmsResponses = await axios.all(filmsRequests)
                     const starshipsResponses = await axios.all(starshipsRequests)
