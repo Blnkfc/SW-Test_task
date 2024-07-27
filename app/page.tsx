@@ -2,7 +2,7 @@
 
 import Link from "next/link"
 
-const TitlePage = async  () => {
+const TitlePage = () => {
 
 
   return <div

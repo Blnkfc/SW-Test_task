@@ -36,8 +36,9 @@ const CharacterFlow = (props:any) => {
     useEffect(() => {
         if(props.isDisplayed){
             if(isLoading){
-                const filmsRequests = characterInfo?.films.map((f) =>  axios.get(`https://sw-api.starnavi.io/films/${f}`).then(function (res){ return res})) || []
-                const starshipsRequests = characterInfo?.starships.map( (s) => axios.get(`https://sw-api.starnavi.io/starships/${s}`).then(function (res){ return res})) || []
+                console.log(`CHAR: ${JSON.stringify(characterInfo)}`)
+                const filmsRequests = characterInfo?.films.map((f) =>  axios.get(`https://sw-api.starnavi.io/films/${f}`).then(function (res){ console.log(`FFFFREQUESTS: ${JSON.stringify(res)}`); return res})) || []
+                const starshipsRequests = characterInfo?.starships.map( (s) => axios.get(`https://sw-api.starnavi.io/starships/${s}`).then(function (res){console.log(`SSSSRESPONSES: ${JSON.stringify(res)}`); return res})) || []
                 const fetchData = async() => {
                     const filmsResponses = await axios.all(filmsRequests)
                     const starshipsResponses = await axios.all(starshipsRequests)

@@ -5,7 +5,6 @@ import Header from "./StaticComps/Header/page";
 import Footer from "./StaticComps/Footer/page";
 
 
-
 const lato = Lato({ 
   weight: ['400', '700'],
   style: 'normal',

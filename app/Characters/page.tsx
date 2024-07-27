@@ -5,6 +5,7 @@ import SingleCharacter from './SingleCharacter/page';
 import { Character } from '@/interfaceList';
 
 
+
 const Characters = () => {
     //States for full characters list and loading while fetching.
     //Setter fires in GET requests
