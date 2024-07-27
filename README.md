@@ -1,36 +1,28 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
-## Getting Started
+## Starnavi Test Task
 
-First, run the development server:
+Aim of the project is to:
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+-  Work with starnavi.io api.
+-  Display StarWars characters in a page.
+-  Visualize a connection of characters with the films they were a part of and starships they traveled.
+-  Create unit tests for the components to cover the functionality.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Technologies used
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Technologies and libraries utilizzed in the project:
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+- NextJs framework as a foundation for the whole project.
+- Axios as a tool to create api requests.
+- Tailwind as a library for styling components.
+- Typescript to avoid type-related errors.
+- Jest as a tool for testing the component.
+  * jest-environment as part of Jest setup.
+  * msw as part of Jest setup.
+  * React testing library as part of Jest setup.
 
-## Learn More
 
-To learn more about Next.js, take a look at the following resources:
+## Deployment on Vercel
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+Deployed version of the project is available via a link below:
+https://sw-test-task-6b8qgq383-blnkfcs-projects.vercel.app/
